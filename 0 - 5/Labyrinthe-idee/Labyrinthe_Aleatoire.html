@@ -1,0 +1,184 @@
+<HTML>
+<HEAD>
+<SCRIPT>
+start_position = new String(0)
+last_spaceX = ""
+last_spaceY = ""
+h = 20 // Taille du labyrinthe aléatoire //
+l = 20 // Taille du labyrinthe aléatoire //
+x = 0
+y = 0
+j = 0
+tab = new Array()
+function removeWall(X,Y)
+{
+tab[X][Y] = " "
+x = X
+y = Y
+}
+function verifier(X,Y)
+{
+if (X >= h || Y >= l || X <= -1 || Y <= -1)
+{
+return false
+}
+else
+{
+if (start_position == 0) start_position = X + "," + Y
+part1 = true
+part2 = true
+part3 = true
+part4 = true
+if (X-1 >= 0 && Y <= l-1) if (tab[X-1][Y] == " " && X-1 != x) part1 = false
+if (Y-1 >= 0 && X <= h-1) if (tab[X][Y-1] == " " && Y-1 != y) part2 = false
+if (X*1+1 <= h-1 && Y >= 0) if (tab[X*1+1][Y] == " " && X*1+1 != x) part3 = false
+if (Y*1+1 <= l-1 && X >= 0) if (tab[X][Y*1+1] == " " && Y*1+1 != y) part4 = false
+if ( !part1 || !part2  || !part3 || !part4) return false
+else return true
+}
+}
+function inidata()
+{
+for (i=0;i<h;i++)
+{
+tab[i] = new Array()
+for (x=0;x<l;x++)
+{
+tab[i][x] = "000000"
+}
+}
+trajet()
+for (p=0;p<l*h;p++)
+{
+//
+traX = new Array()
+traY = new Array()
+for (i=0;i<tab.length;i++)
+{
+for (x=0;x<tab[i].length;x++)
+{
+if (tab[i][x] == " ")
+{
+traX[traX.length] = i
+traY[traY.length] = x
+}
+}
+}
+next()
+//
+traX = new Array()
+traY = new Array()
+for (i=0;i<tab.length;i++)
+{
+for (x=0;x<tab[i].length;x++)
+{
+if (tab[i][x] == " ")
+{
+traX[traX.length] = i
+traY[traY.length] = x
+}
+}
+}
+next()
+//
+}
+if (last_spaceX + "," + last_spaceY == start_position)
+{
+do
+{
+g = Math.floor(Math.random()*l)
+f = Math.floor(Math.random()*h)
+}
+while (tab[g][f] != " " || g+","+f == start_position)
+}
+code = "<HTML><HEAD><TITLE>..: Labyrinthe :..</TITLE><SCRIPT language='javascript'>\n"
+code+="positionFin = '" + last_spaceX +","+ last_spaceY + "'\n"
+code+="window.status = 'Chargement de la page'\n"
+code+="function départ()\n{\nwindow.status = 'Création des murs'\ncréemur()\nwindow.status = 'Initiation de la case de départ'\n"
+code+="document.getElementById('"+start_position+"').style.backgroundColor = 'C80000'\ndocument.getElementById('f"+start_position+"').color='C80000'\n"
+depPos = start_position.split(",")
+code+="document.form.positionX.value = "+depPos[1]+"\ndocument.form.positionY.value = "+depPos[0]+"\n"
+code+="window.status = 'Initiation de la case de la fin'\ndocument.getElementById(positionFin).style.backgroundColor = '0AC814'\ndocument.getElementById('f'+positionFin).color = '0AC814'\n"
+code+="window.status = ''"
+code+="}\n"
+code+="function move(e)\n{\ny = document.form.positionY.value*1\nx = document.form.positionX.value*1\nif (e == 50 && check(y+1,x))\n{\nafficher(y+1,x)\n}\nif (e == 54 && check(y,x+1))\n{\nafficher(y,x+1)\n}\nif (e == 56 && check(y-1,x))\n{\nafficher(y-1,x)\n}\nif (e == 52 && check(y,x-1))\n{\nafficher(y,x-1)\n}\n}\n"
+code+="function check(Y,X){\nif (document.getElementById(Y+','+X)) return true\nelse return false\n}\n"
+code+="function afficher(Y,X)\n{\neffacer(document.form.positionY.value,document.form.positionX.value)\ndocument.getElementById(Y+','+X).style.backgroundColor = 'C80000'\ndocument.getElementById('f'+Y+','+X).color='C80000'\ndocument.form.positionX.value = X\ndocument.form.positionY.value = Y\nvérifier()\n}\n"
+code+="function effacer(Y,X){\ndocument.getElementById(Y+','+X).style.backgroundColor = 'FFFFFF'\ndocument.getElementById('f'+Y+','+X).color = 'FFFFFF'\n}\n"
+code+="function créemur(){\n"
+code+="position = new Array("
+code2 = new String()
+for (i=0;i<h;i++)
+{
+for(e=0;e<l;e++)
+{
+
+if (tab[i][e] == "000000")
+{
+code2+=",'"+i+","+e+"'"
+}
+}
+}
+code2 = code2.replace(",","")
+code+=code2
+code+=")\n"
+code+="pos = position\nfor (i=0;i<position.length;i++)\n{\npos[i] = pos[i].split(',')\nif (check(pos[i][0],pos[i][1]))\n{\ndocument.getElementById(position[i]).style.backgroundColor = '000000'\ndocument.getElementById('f'+position[i]).color = '000000'\ndocument.getElementById(position[i]).id = ''\n}\n}\n}\n"
+code+="function vérifier()\n{\nif (document.form.positionY.value+','+document.form.positionX.value == positionFin)\n{\nalert('Vous avez gagné !')\n}\n}\n"
+code+="</SCR"+"IPT>"
+code+="</HEAD><BODY onload='départ()' onkeypress='move(event.keyCode)'><FORM name='form'><INPUT type='hidden' name='hauteur'><INPUT type='hidden' name='largeur'><INPUT type='hidden' name='positionX'><INPUT type='hidden' name='positionY'></FORM>"
+code+="<SCRIPT>\n"
+code+="window.status = 'Chargement du labyrinthe'\n"
+code+="hauteur = "+h+"\nlargeur = "+l+"\nbackgcolor = 'FFFFFF'\n"
+code+="code =\"<TABLE border='0'><TR>\"\nfor (i=0;i<largeur+2;i++)\n{\ncode+=\"<TD bgcolor='000000'></TD>\"\n}\ncode+=\"</TR>\"\nfor (i=0;i<hauteur;i++)\n{\ncode +=\"<TR><TD bgcolor='000000'></TD>\"\nfor (x=0;x<largeur;x++)\n{\ncode +=\"<TD id='\"+i+\",\"+x+\"' bgcolor='\"+backgcolor+\"'><FONT color='\"+backgcolor+\"' id='f\"+i+\",\"+x+\"'>---</FONT></TD>\"\n}\ncode+=\"<TD bgcolor='000000'></TD></TR>\"\n}\ncode+=\"<TR>\"\nfor (i=0;i<largeur+2;i++)\n{\ncode+=\"<TD bgcolor='000000'></TD>\"\n}\ncode+=\"</TR>\"\ncode+=\"</TABLE>\"\ndocument.write(code)\ndocument.form.hauteur.value = hauteur\ndocument.form.largeur.value = largeur\n"
+code+="</SCR"+"IPT><FORM>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<INPUT type='button' value='Haut' onclick='move(56)'><BR><INPUT type='button' value='Gauche' onclick='move(52)'><INPUT type='button' value='Droite' onclick='move(54)'><BR>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<INPUT type='button' value='Bas' onclick='move(50)'></FORM>Vous devez vous rendre à la case verte.</BODY></HTML>"
+fenetre = window.open()
+fenetre.document.write(code)
+fenetre.location.reload()
+}
+function trajet()
+{
+for (i=0;i<l*h;i++)
+{
+dir = Math.floor(Math.random()*4)
+if (dir == 0)
+{
+if (verifier(x*1+1,y)) removeWall(x*1+1,y)
+}
+if (dir == 1)
+{
+if (verifier(x,y-1)) removeWall(x,y-1)
+}
+if (dir == 2)
+{
+if (verifier(x-1,y)) removeWall(x-1,y)
+}
+if (dir == 3)
+{
+if (verifier(x,y*1+1)) removeWall(x,y*1+1)
+}
+}
+if (j == 0) // La fin est égale à la dernière case possible et trouvé du premier trajet //
+{
+last_spaceX = x
+last_spaceY = y
+}
+j ++
+}
+function next()
+{
+last = traX.length
+do
+{
+random_num = Math.floor(Math.random()*traX.length)
+x = traX[random_num]
+y = traY[random_num]
+trajet()
+}
+while (last != traX.length)
+}
+</SCRIPT>
+</HEAD>
+<BODY onload="inidata()">
+<INPUT type="button" value="Généré un nouveau labyrinthe" onclick="window.location.reload()">
+</BODY>
+</HTML>

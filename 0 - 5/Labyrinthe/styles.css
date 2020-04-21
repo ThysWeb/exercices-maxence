@@ -1,0 +1,116 @@
+body html{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+/*
+    background-image: url(bg.png); */
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+}
+
+#pion{
+    background-image: url(pion-bg.png);
+    background-size: cover;
+    background-position: center;
+    height: 3vh;
+    width: 3vh; 
+}
+
+.obstacle{
+    position: absolute;
+    background-image: url(texture-mur.png);
+}
+
+.hauteur{
+    height: 5vh;
+}
+
+.largeur{
+    width: 3vw;
+}
+
+
+/*********************** BORDURES */
+/* hauteur totale: 84vh */
+/* largeur totale: 85vw */ 
+
+/*************************** EXT. */
+#obstacle-ext1{
+    height: 28vh;
+    left: 5vw;
+    top: 5vw;
+}
+#obstacle-ext6{
+    height: 42vh;
+    left: 5vw;
+    top: 48vh;
+}
+
+
+#obstacle-ext2{
+    width: 85vw;
+    left: 5vw;
+    top: 5vh;
+}
+
+
+#obstacle-ext3{
+    height: 54vh;
+    left: 87vw;
+    top: 5vh;
+}
+#obstacle-ext4{
+    height: 16vh;
+    left: 87vw;
+    top: 75vh;
+}
+
+
+#obstacle-ext5{
+    width: 85vw;
+    left: 5vw;
+    top: 90.05vh;
+}
+
+/*************************** INT. */
+#obstacle-int1{
+    height: 56vh;
+    left: 15vw;
+    top: 20vh;
+}
+#obstacle-int3{
+    height: 57vh;
+    left: 26vw;
+    top: 33vh;
+}
+#obstacle-int5{
+    height: 28vh;
+    left: 42vw;
+    top: 42vh;
+}
+#obstacle-int6{
+    height: 28vh;
+    left: 56vw;
+    top: 42vh;
+}
+#obstacle-int7{
+    height: 10vh;
+    left: 76vw;
+    top: 10vh;
+}
+#obstacle-int8{
+    height: 14vh;
+    left: 62vw;
+    top: 19vh;
+}
+
+
+#obstacle-int2{
+    width: 61vw;
+    left: 18vw;
+    top: 28vh;
+}

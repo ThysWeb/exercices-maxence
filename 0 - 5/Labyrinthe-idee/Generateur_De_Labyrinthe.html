@@ -1,0 +1,98 @@
+<HTML>
+
+<HEAD>
+    <TITLE>G�n�rateur de labyrinthe</TITLE>
+    <SCRIPT language="javascript">
+        var color = new Array();
+        var X
+        var Y
+        function genTableau(Y, X) {
+            color = new Array()
+            backgcolor = "FFFFFF"
+            code = "<TABLE border='1'>"
+            for (i = 0; i < Y; i++) {
+                color[i] = new Array()
+                code += "<TR>"
+                for (x = 0; x < X; x++) {
+                    color[i][x] = backgcolor
+                    code += "<TD id='" + i + "," + x + "' style='backgroundColor:" + backgcolor + "' onclick='change(this)'><FONT color='" + backgcolor + "' id='f" + i + "," + x + "'>---</FONT></TD>"
+                }
+                code += "</TR>"
+            }
+            code += "</TABLE>"
+            document.getElementById("tab").innerHTML = code
+        }
+        function change(element) {
+            id = element.id
+            position = id.split(",")
+            couleurSelect = color[position[0]][position[1]]
+            if (couleurSelect == "FFFFFF") {
+                color[position[0]][position[1]] = "000000"
+                document.getElementById(id).style.backgroundColor = "000000"
+                document.getElementById("f" + id).color = "000000"
+            }
+            if (couleurSelect == "000000") {
+                color[position[0]][position[1]] = "FFFFFF"
+                document.getElementById(id).style.backgroundColor = "FFFFFF"
+                document.getElementById("f" + id).color = "FFFFFF"
+            }
+        }
+        function genLabyrinthe() {
+            code = "<HTML><HEAD><TITLE>..: Labyrinthe :..</TITLE><SCRIPT language='javascript'>\n"
+            code += "positionFin = '" + document.form.positionFinale.value + "'\n"
+            code += "window.status = 'Chargement de la page'\n"
+            code += "function d�part()\n{\nwindow.status = 'Cr�ation des murs'\ncr�emur()\nwindow.status = 'Initiation de la case de d�part'\n"
+            code += "document.getElementById('" + document.form.positionDepart.value + "').style.backgroundColor = 'C80000'\ndocument.getElementById('f" + document.form.positionDepart.value + "').color='C80000'\n"
+            depPos = document.form.positionDepart.value.split(",")
+            code += "document.form.positionX.value = " + depPos[1] + "\ndocument.form.positionY.value = " + depPos[0] + "\n"
+            code += "window.status = 'Initiation de la case de la fin'\ndocument.getElementById(positionFin).style.backgroundColor = '0AC814'\ndocument.getElementById('f'+positionFin).color = '0AC814'\n"
+            code += "window.status = ''"
+            code += "}\n"
+            code += "function move(e)\n{\ny = document.form.positionY.value*1\nx = document.form.positionX.value*1\nif (e == 50 && check(y+1,x))\n{\nafficher(y+1,x)\n}\nif (e == 54 && check(y,x+1))\n{\nafficher(y,x+1)\n}\nif (e == 56 && check(y-1,x))\n{\nafficher(y-1,x)\n}\nif (e == 52 && check(y,x-1))\n{\nafficher(y,x-1)\n}\n}\n"
+            code += "function check(Y,X){\nif (document.getElementById(Y+','+X)) return true\nelse return false\n}\n"
+            code += "function afficher(Y,X)\n{\neffacer(document.form.positionY.value,document.form.positionX.value)\ndocument.getElementById(Y+','+X).style.backgroundColor = 'C80000'\ndocument.getElementById('f'+Y+','+X).color='C80000'\ndocument.form.positionX.value = X\ndocument.form.positionY.value = Y\nv�rifier()\n}\n"
+            code += "function effacer(Y,X){\ndocument.getElementById(Y+','+X).style.backgroundColor = 'FFFFFF'\ndocument.getElementById('f'+Y+','+X).color = 'FFFFFF'\n}\n"
+            code += "function cr�emur(){\n"
+            code += "position = new Array("
+            code2 = new String()
+            for (i = 0; i < document.form.Y.value; i++) {
+                for (e = 0; e < document.form.X.value; e++) {
+
+                    if (color[i][e] == "000000") {
+                        code2 += ",'" + i + "," + e + "'"
+                    }
+                }
+            }
+            code2 = code2.replace(",", "")
+            code += code2
+            code += ")\n"
+            code += "pos = position\nfor (i=0;i<position.length;i++)\n{\npos[i] = pos[i].split(',')\nif (check(pos[i][0],pos[i][1]))\n{\ndocument.getElementById(position[i]).style.backgroundColor = '000000'\ndocument.getElementById('f'+position[i]).color = '000000'\ndocument.getElementById(position[i]).id = ''\n}\n}\n}\n"
+            code += "function v�rifier()\n{\nif (document.form.positionY.value+','+document.form.positionX.value == positionFin)\n{\nalert('Vous avez gagn� !')\n}\n}\n"
+            code += "</SCR" + "IPT>"
+            code += "</HEAD><BODY onload='d�part()' onkeypress='move(event.keyCode)'><FORM name='form'><INPUT type='hidden' name='hauteur'><INPUT type='hidden' name='largeur'><INPUT type='hidden' name='positionX'><INPUT type='hidden' name='positionY'></FORM>"
+            code += "<SCRIPT>\n"
+            code += "window.status = 'Chargement du labyrinthe'\n"
+            code += "hauteur = " + document.form.Y.value + "\nlargeur = " + document.form.X.value + "\nbackgcolor = 'FFFFFF'\n"
+            code += "code =\"<TABLE border='0'><TR>\"\nfor (i=0;i<largeur+2;i++)\n{\ncode+=\"<TD bgcolor='000000'></TD>\"\n}\ncode+=\"</TR>\"\nfor (i=0;i<hauteur;i++)\n{\ncode +=\"<TR><TD bgcolor='000000'></TD>\"\nfor (x=0;x<largeur;x++)\n{\ncode +=\"<TD id='\"+i+\",\"+x+\"' bgcolor='\"+backgcolor+\"'><FONT color='\"+backgcolor+\"' id='f\"+i+\",\"+x+\"'>---</FONT></TD>\"\n}\ncode+=\"<TD bgcolor='000000'></TD></TR>\"\n}\ncode+=\"<TR>\"\nfor (i=0;i<largeur+2;i++)\n{\ncode+=\"<TD bgcolor='000000'></TD>\"\n}\ncode+=\"</TR>\"\ncode+=\"</TABLE>\"\ndocument.write(code)\ndocument.form.hauteur.value = hauteur\ndocument.form.largeur.value = largeur\n"
+            code += "</SCR" + "IPT><FORM>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<INPUT type='button' value='Haut' onclick='move(56)'><BR><INPUT type='button' value='Gauche' onclick='move(52)'><INPUT type='button' value='Droite' onclick='move(54)'><BR>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<INPUT type='button' value='Bas' onclick='move(50)'></FORM>Vous devez vous rendre � la case verte.</BODY></HTML>"
+            fenetre = window.open()
+            fenetre.document.write(code)
+            fenetre.location.reload()
+        }
+    </SCRIPT>
+</HEAD>
+
+<BODY>
+    <FORM name="form">
+        Hauteur : <INPUT type="text" name="Y"><BR>
+        Largeur : <INPUT type="text" name="X"><BR>
+        Position de d�part : <INPUT type="text" name="positionD�part"> (ex : 0,0)<BR>
+        Position de la fin : <INPUT type="text" name="positionFinale"> (ex : 5,5)<BR>
+        <INPUT type="button" value="G�n�rer le tableau"
+            onclick="genTableau(document.form.Y.value,document.form.X.value)">
+    </FORM>
+    <DIV id="tab"></DIV>
+    <INPUT type="button" value="G�n�r� le labyrinthe" onclick="genLabyrinthe()">
+</BODY>
+
+</HTML>
