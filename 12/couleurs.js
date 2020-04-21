@@ -18,15 +18,12 @@ for(let i=0; i<3; i++)
 // fonction qui changera la couleur du body
 function changerCouleur(rouge, vert, bleu)
 {
+    // on modifie le cookie en utilisant la fonction createCookie
+    createCookie("couleurActuelle", "rgb("+rouge+", "+vert+", "+bleu+")", 3);
+
+    // on associe la couleur entrée en paramètre au body 
     bodyElement.style.backgroundColor = "rgb("+rouge+", "+vert+", "+bleu+")";
-var testCouleur = bodyElement.style.backgroundColor;
 
-alert("la couleur est: "+testCouleur);
-}
-
-
-// on crée un cookie si il n'existe pas déjà
-if(readCookie("couleurActuelle") == null)
-{
-    createCookie("couleurActuelle", laCouleur, 3);
+    // test
+    alert("la couleur est: "+readCookie("couleurActuelle"));
 }
