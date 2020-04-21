@@ -1,5 +1,5 @@
 // on récupère la div qui affichera le nom de l'utilisateur
-var prenomUtilisateur = document.getElementById("container")
+var divPrenom = document.getElementById("container")
 
 // on récupère le bouton qui permettra de réinitialiser le prénom
 document.getElementById("reinit").addEventListener("click", function(){eraseCookie("prenom")});
@@ -11,9 +11,11 @@ if(readCookie("prenom") == null)
     prenomUtilisateur = prompt("Entrez votre prénom: "); 
     // on crée le cookie
     createCookie("prenom", prenomUtilisateur, 3);
+    // sinon on affiche son contenu dans la div
+    divPrenom.innerHTML = "Bonjour : "+readCookie("prenom");
 }
 else
 {
     // sinon on affiche son contenu dans la div
-    prenomUtilisateur.innerHTML = "Bonjour : "+readCookie("prenom");
+    divPrenom.innerHTML = "Bonjour : "+readCookie("prenom");
 }
