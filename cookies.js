@@ -28,3 +28,8 @@ function eraseCookie(name) {
     // pour supprimer un cookie, on le périme createCookie(name,"",-1);
     createCookie(name, "", -1);
 }
+
+function eraseCookie(name) {
+    // pour supprimer un cookie, on le périme createCookie(name,"",-1);
+    createCookie(name, "", -1);
+}
