@@ -13,9 +13,9 @@ var btnRestart =  document.getElementById("restart");
 var point = document.getElementById("points");
 
 // initialisation les variables
-var ms    = 0;
-var s     = 0;
-var m     = 0;
+var ms    = 0+0;
+var s     = 0+0;
+var m     = 0+0;
 
 // on place des eventListenner
 btnStart.addEventListener("click", function(){startChrono()});
@@ -39,22 +39,24 @@ function stopChrono()
 
 function verifChrono()
 {
-    if (ms > 999)
+    ms++;
+    if (ms > 100)
     {
-        if(point.style.display == "none")
+        if( point.style.color = "var(--text-color)")
         {
-            point.style.display = "block";
+            point.style.color = "var(--body-background-color)";
         }
         else
         {
-            point.style.display = "none";
+            point.style.color = "var(--text-color)";
         }
-        // si on atteint 1000ms
+
+        // si on atteint 100ms
         // ms repart à 1 et on incrémente les secondes de 1
         ms = 1;
         s ++;
     }
-    else if (s > 59)
+    else if(s > 59)
     {
         // pareil pour les secondes
         s = 1;

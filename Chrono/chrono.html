@@ -3,20 +3,34 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="chrono.css">
 </head>
 
 <body>
-    <div id="chrono">
-        <div id="msActuel">00</div><div id="points">:</div>
-        <div id="sActuel">00</div>.
-        <div id="mActuel">00</div>
-    </div>
+
+    <header>
+        <div id="width-limit">
+
+            <a id="titre" href="menu.html">
+                MAGNIFIQUE MENU D&Eacute;ROULANT
+            </a>
+    </header>
 
     <div id="container">
-        <button id="start">Start</button>
-        <button id="stop">Pause</button>
-        <button id="restart">Restart</button>
+
+        <div id="chrono">
+            <div class="currentTime" id="mActuel">00</div><div class="currentTime" id="points">:</div>
+            <div class="currentTime" id="sActuel">00</div><div class="currentTime">.</div>
+            <div class="currentTime" id="msActuel">00</div>
+        </div>
+
+        <div id="btns">
+            <button id="start">Start</button>
+            <button id="stop">Pause</button>
+            <button id="restart">Restart</button>
+        </div>
     </div>
+
     <script src="chrono.js"></script>
 </body>
 
