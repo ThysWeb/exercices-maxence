@@ -36,6 +36,8 @@ a {
 button {
     background-color: var(--btn-color);
     color: var(--text-color);
+    font-family: 'Cabin', sans-serif;
+    font-size: 1.5em;
     padding: 12px 20px 12px 20px;
     margin: 16px;
     border: 0;
@@ -78,6 +80,7 @@ button:hover {
 }
 
 .containerCurrentTime {
+    align-content: center;
     padding: 10px;
     flex-wrap: nowrap;
 }
@@ -87,4 +90,10 @@ button:hover {
     font-family: 'Cabin', sans-serif;
     font-size: 1.8em;
     color: var(--text-color);
+}
+
+#chrono {
+    padding: 45px 90px 45px 90px;
+    border: 20px solid gray;
+    background-color: var(--header-color);
 }

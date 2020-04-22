@@ -45,6 +45,24 @@ function stopChrono()
     btnStop.style.border = "solid 1px rgb(255,0,0)";
 }
 
+function restartChrono()
+{
+
+    clearInterval(intervalle);
+    ms, s, m = 0;
+    zs, zm = "0";
+
+    if(btnStart.disabled = false)
+    {
+        startChrono();
+    }
+
+    msActuel.innerHTML = ms;
+    sActuel.innerHTML = zs+s;
+    mActuel.innerHTML = zm+m;
+
+}
+
 function verifChrono()
 {
     if(s<9)
