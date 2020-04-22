@@ -9,6 +9,8 @@
     --header-color: #1c1c1c;
     --text-color: #FFFFFF;
     --search-bar-color: #474747;
+    --btn-color: #5E5E5E;
+    --shadow-color: #383838;
 }
 
 /* ******** general ******* */
@@ -31,6 +33,13 @@ a {
     text-align: center;
 }
 
+button {
+    background-color: var(--btn-color);
+    color: var(--text-color);
+    padding: 12px 20px 12px 20px;
+    margin: 16px;
+    border: 0;
+}
 
 /* ********* header ********* */
 /** all */
@@ -54,12 +63,27 @@ header {
 }
 
 /* ********** container ********* */
-#container{
-    
+#container {
+    align-items: center;
+    flex-direction: column;
+    padding: 10vh;
 }
 
-.currentTime{
-    padding: 20px;
+#btns {
+    padding: 55px;
+}
+
+button:hover {
+   box-shadow: 5px 5px 15px 5px #2B2B2B;
+}
+
+.containerCurrentTime {
+    padding: 10px;
+    flex-wrap: nowrap;
+}
+
+.currentTime {
+    align-items: center;
     font-family: 'Cabin', sans-serif;
     font-size: 1.8em;
     color: var(--text-color);

@@ -17,6 +17,10 @@ var ms    = 0+0;
 var s     = 0+0;
 var m     = 0+0;
 
+// ----------- affichage 0 -------------
+var zs = "0";
+var zm = "0";
+
 // on place des eventListenner
 btnStart.addEventListener("click", function(){startChrono()});
 btnStop.addEventListener("click", function(){stopChrono()});
@@ -27,22 +31,43 @@ function startChrono()
 {
     intervalle = setInterval(verifChrono, 10)
     btnStart.disabled = true;
+    btnStart.style.border = "solid 1px rgb(173,255,47)";
     btnStop.disabled = false;
+    btnStop.style.border = "solid 1px rgb(0,0,0)";
 }
 
 function stopChrono()
 {
     clearInterval(intervalle);
     btnStart.disabled = false;
+    btnStart.style.border = "solid 1px rgb(0,0,0)";
     btnStop.disabled = true;
+    btnStop.style.border = "solid 1px rgb(255,0,0)";
 }
 
 function verifChrono()
 {
-    ms++;
+    if(s<9)
+    {
+        zs = "0";
+    }
+    else
+    {
+        zm = "";
+    }
+
+    if(m<9)
+    {
+        zm = "0";
+    }
+    else
+    {
+        zm = "";
+    }
+
     if (ms > 100)
     {
-        if( point.style.color = "var(--text-color)")
+        if(point.style.color == "var(--text-color)")
         {
             point.style.color = "var(--body-background-color)";
         }
@@ -51,8 +76,7 @@ function verifChrono()
             point.style.color = "var(--text-color)";
         }
 
-        // si on atteint 100ms
-        // ms repart à 1 et on incrémente les secondes de 1
+        // si on atteint 100ms ms repart à 1 et on incrémente les secondes de 1
         ms = 1;
         s ++;
     }
@@ -64,11 +88,14 @@ function verifChrono()
     }
     else if (m > 59)
     {
-        stopChrono();        
+        stopChrono(); // à 59:59:100 on arrête le chrono
     }
+
+    // on incrément les ms
+    ms++;
 
     // on remplace les valeurs dans le HTML
     msActuel.innerHTML = ms;
-    sActuel.innerHTML = s;
-    mActuel.innerHTML = m;
+    sActuel.innerHTML = zs+s;
+    mActuel.innerHTML = zm+m;
 }
