@@ -54,7 +54,7 @@ header {
 }
 
 /** text category */
-.navbar-cat {
+.navbar-menu {
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
@@ -62,6 +62,20 @@ header {
     font-size: 1.1em;
     color: var(--text-color);
 }
+
+.submenu div a
+{
+    font-family: 'Cabin', sans-serif;
+    font-size: 1em;
+    color: var(--text-color);
+}
+
+.submenu
+{
+    display: none;
+    position: absolute;
+}
+
 
 
 #container{

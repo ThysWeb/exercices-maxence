@@ -2,7 +2,7 @@
 var divPrenom = document.getElementById("container")
 
 // on récupère le bouton qui permettra de réinitialiser le prénom
-document.getElementById("reinit").addEventListener("click", function(){eraseCookieRestart("prenom")});
+document.getElementById("reinit").addEventListener("click", function(){eraseCookie("prenom"); reload();});
 
 
 if(readCookie("prenom") == null)

@@ -18,3 +18,7 @@ btnStop.addEventListener("click", function(){stopChrono()});
 btnRestart.addEventListener("click", function(){restartChrono()});
 
 // fonction start déclenchée lors du click sur le btnStart
+function start()
+{
+    t = 
+}
