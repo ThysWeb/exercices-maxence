@@ -1,7 +1,8 @@
 // on récupère les div du chronomètre
-var tempsActuel = document.querySelectorAll("tempsActuel");
+var msActuel = document.getElementById("msActuel");
+var sActuel = document.getElementById("sActuel");
+var mActuel = document.getElementById("mActuel");
 
-alert(tempsActuel);
 
 // on récupère les boutons
 var btnStart   =  document.getElementById("start");
@@ -12,7 +13,6 @@ var btnRestart =  document.getElementById("restart");
 var point = document.getElementById("points");
 
 // initialisation les variables
-var temps = 0;
 var ms    = 0;
 var s     = 0;
 var m     = 0;
@@ -27,12 +27,14 @@ function startChrono()
 {
     intervalle = setInterval(verifChrono, 10)
     btnStart.disabled = true;
+    btnStop.disabled = false;
 }
 
 function stopChrono()
 {
     clearInterval(intervalle);
-    btnStart.disabled = true;
+    btnStart.disabled = false;
+    btnStop.disabled = true;
 }
 
 function verifChrono()
@@ -50,13 +52,13 @@ function verifChrono()
         // si on atteint 1000ms
         // ms repart à 1 et on incrémente les secondes de 1
         ms = 1;
-        s += 1;
+        s ++;
     }
     else if (s > 59)
     {
         // pareil pour les secondes
         s = 1;
-        m += 1;
+        m ++;
     }
     else if (m > 59)
     {
@@ -64,8 +66,7 @@ function verifChrono()
     }
 
     // on remplace les valeurs dans le HTML
-    tempsActuel[0].innerHTML = ms;
-    tempsActuel[1].innerHTML = s;
-    tempsActuel[2].innerHTML = m;
-    
+    msActuel.innerHTML = ms;
+    sActuel.innerHTML = s;
+    mActuel.innerHTML = m;
 }
