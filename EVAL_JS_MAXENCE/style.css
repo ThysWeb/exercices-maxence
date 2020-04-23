@@ -1,0 +1,42 @@
+/* ********* couleur ********** */
+:root
+{
+    --border-color: #747372;
+    --body-background-color: #F4DCB4;
+}
+
+/* ********** general ********** */
+
+
+div,
+h1
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+body
+{
+    background-color: var(--body-background-color);
+}
+
+/* ********* saisie utilisateur ********** */
+#saisies-utilisateur,
+#resultats
+{
+    border: 2px solid var(--border-color);
+}
+
+.ligne
+{
+    flex-direction: row;
+    padding: 10px;
+}
+
+.ligne input
+{
+    margin: auto;
+    width: 20vw;
+}
