@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Gestion des produits</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../CSS/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="page">
+
+        <header>
+            <div class="headerLien">
+                <a href="#">Retour</a>
+            </div>
+            <div class="headerTitre">
+                <h1>Gestion des produits</h1>
+            </div>
+            <div class="headerClient">
+                <p class="gras">Bonjour XXX,</p>
+                <a href="#">Deconnexion</a></p>
+            </div>
+        </header>
+
+        <div id="conteneur">
+            <form action="#" method="POST">
+                <div class="conteneurColonne">
+                    <label for="nom">Nom</label>
+                    <input type="text" name="nom" placeholder="Entrez le nom du produit" autofocus required>
+                </div>
+
+                <div class="conteneurColonne">
+                    <label for="photo">Photo</label>
+                    <input type="text" name="photo" placeholder="Lien photo" required>
+                </div>
+
+                <div class="conteneurColonne">
+                    <label for="stock">Stock</label>
+                    <input type="text" name="stock" placeholder="Stock">
+                </div>
+
+                <div class="conteneurColonne">
+                    <label for="categorie">Catégorie</label>
+                    <select name="categorie" id="categorie">
+                        <option value="">--Choisissez la catégorie du produit--</option>
+                        <option value="legumes">Légumes</option>
+                        <option value="fruits">Fruits</option>
+
+                    </select>
+                </div>
+
+                <div class="conteneurColonne">
+                    <label for="description">Description</label><br>
+                    <textarea id="description" name="description" rows="10" cols="53"></textarea>
+                </div>
+            </form>
+
+            <div class="bouton">
+                <input type="submit" value="Valider">
+            </div>
+        </div>
+
+        <footer>
+            <div class="footerReseaux">
+                <a href="#">Réseaux sociaux</a>
+            </div>
+            <div class="footerContact">
+                <a href="#">Contact</a>
+            </div>
+            <div class="footerCGV">
+                <a href="#">CGV</a>
+            </div>
+            <div class="footerEngagement">
+                <a href="#">Nos engagements</a>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

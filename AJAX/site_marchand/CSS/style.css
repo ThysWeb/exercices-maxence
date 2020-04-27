@@ -1,0 +1,300 @@
+:root {
+    --vert: rgb(31,162,79);
+    --jaune: rgba(253,226,45,1);
+
+    --noir: black;
+    --blanc: white;
+    --rouge: #CB214A;
+}
+
+/************************************************ GENERAL*/
+html,
+body {
+    font-family: 'Noto Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--noir);
+    background: var(--vert);
+    background: linear-gradient(140deg, var(--vert) 50%, var(--jaune) 90%);
+}
+
+img {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: var(--noir);
+}
+
+a:hover {
+    color: var(--rouge);
+    text-decoration: underline;
+}
+
+#page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/********************************************** ATTRIBUTS*/
+
+.centre {
+    text-align: center;
+}
+
+.gras {
+    font-weight: bold;
+}
+
+.blanc {
+    color: var(--blanc);
+}
+
+.espace {
+    margin: 1em;
+}
+
+.petitTitre {
+    text-align: center;
+    font-size: 3em;
+    color: var(--blanc);
+}
+
+/************************************************** TITRE*/
+
+h1 {
+    color: var(--noir);
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+/************************************************* HEADER*/
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color : var(--noir);
+    border-bottom: 3px solid var(--noir);
+    padding: 2vh;
+    background: var(--blanc);
+}
+
+.headerLien, .headerClient {
+    flex: 1;
+}
+
+.headerTitre {
+    flex: 2;
+}
+
+/*************************************************FOOTER*/
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 3px solid var(--noir);
+    padding: 2em;
+    background: var(--blanc);
+    text-align: center;
+}
+
+.footerReseaux,
+.footerContact,
+.footerCGV,
+.footerEngagement {
+    flex: 1;
+}
+
+/*************************************************CONTENEUR*/
+#conteneur {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--blanc);
+    border-radius: 5px;
+    padding: 20px;
+    flex-grow: 1; /* permet d'occuper l'espace vide */
+}
+
+#conteneur a {
+    color: var(--blanc);
+}
+#conteneur a:hover {
+    text-decoration: underline;
+}
+
+#conteneurProduit {
+    display: flex;  
+    align-items: flex-start;
+    flex-direction: column;
+    color: var(--blanc);
+    border-radius: 5px;
+    padding: 20px;
+    flex-grow: 1; /* permet d'occuper l'espace vide */
+}
+
+.conteneurLigne {
+    display: flex;
+}
+
+.conteneurColonne {
+    display: flex;
+    flex-direction: column;
+}
+
+.conteneurBloc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 2;
+    width: 24vw;
+}
+
+.conteneurListeProduit {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.conteneurBlocListeProduit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 25vh;
+}
+
+.conteneurBoutons a:hover {
+    text-decoration: none;
+    background-color: rgb(13, 189, 243);
+}
+
+.conteneurDetail{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex: 3;
+    height: 25vh;
+    width: 85vh;
+}
+
+.produitInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.conteneurForm {
+	display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/*************************************************TABLEAU*/
+#conteneurListe {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* permet d'occuper l'espace vide */
+    padding: 2vh;
+    color: var(--blanc);
+}
+
+.tableau {
+    display: flex;
+    flex-direction: column;
+    padding: 2vh;
+    color: var(--blanc);
+}
+
+.tableau a {
+    color: var(--blanc);
+}
+
+.tableau a:hover {
+    color: var(--rouge);
+}
+
+.blocEnTete {
+    background: var(--blanc);
+    color: var(--noir);
+}
+
+.blocEnTete, .blocContenuListe {
+    border: 1px solid white;
+    flex: 1;
+    padding: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*************************************************FORMULAIRE*/
+input,
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    min-width: 300px;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: rgb(23, 154, 194);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: rgb(13, 189, 243);
+}
+
+input[type=button] {
+    width: 100%;
+    background-color: rgb(23, 154, 194);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=button]:hover {
+    background-color: rgb(13, 189, 243);
+}
+
+.bouton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bouton a {
+    text-align:center;
+    width:150px;
+    background-color: rgb(23, 154, 194);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;  
+}
